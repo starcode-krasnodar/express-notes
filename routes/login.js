@@ -15,11 +15,14 @@ module.exports = function(passport) {
                 });
             }
 
-            req.login(user, function (err) {
+            req.login(user, err => {
                 if (err) {
                     return next(err);
                 }
-                return res.redirect('/');
+
+                req.session.save(() => {
+                    res.redirect('/');
+                });
             });
         })(req, res, next);
     }

@@ -1,17 +1,10 @@
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var login = require('./login');
-var signup = require('./signup');
-
-var isAuthenticated = function (req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-
-    res.redirect('/login');
-};
+var express = require('express'),
+    router = express.Router(),
+    login = require('./login'),
+    signup = require('./signup'),
+    isAuthenticated = require('../middleware/authentificated');
 
 module.exports = function (passport) {
     router.get('/login', function (req, res) {
@@ -40,7 +33,9 @@ module.exports = function (passport) {
 
     router.get('/logout', function (req, res) {
         req.logout();
-        res.redirect('/');
+        req.session.save(() => {
+            res.redirect('/');
+        });
     });
 
     router.get('/', isAuthenticated, function (req, res) {

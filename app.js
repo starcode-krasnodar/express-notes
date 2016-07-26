@@ -10,7 +10,8 @@ var express = require('express'),
     flash = require('connect-flash'),
     models = require('./models');
 
-var routes = require('./routes/index');
+var routes = require('./routes/index'),
+    noteRoutes = require('./routes/notes');
 
 var app = express();
 
@@ -37,6 +38,7 @@ var initPassport = require('./passport');
 initPassport(passport);
 
 app.use('/', routes(passport));
+app.use('/notes', noteRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

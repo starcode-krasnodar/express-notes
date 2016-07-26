@@ -1,6 +1,6 @@
 {
   "name": "express-notes",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Alexander Cherkashin <alexander.cherkashin@starcode.ru>",
   "engines": {
     "node": ">=4"

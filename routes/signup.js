@@ -26,7 +26,10 @@ module.exports = function(passport) {
                 if (err) {
                     return next(err);
                 }
-                return res.redirect('/');
+
+                req.session.save(() => {
+                    res.redirect('/');
+                });
             });
         })(req, res, next);
     }

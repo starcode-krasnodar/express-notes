@@ -1,0 +1,11 @@
+extends ../layout
+
+block header
+    nav.navbar.navbar-inverse.navbar-fixed-top
+        div.container-fluid
+            div.navbar-header
+                a.navbar-brand(href='/notes') Заметки
+            div.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href='/logout', class='text-center new-account') Выйти

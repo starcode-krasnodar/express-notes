@@ -1,6 +1,6 @@
 extends layout
 
-block content
+block header
     nav.navbar.navbar-inverse.navbar-fixed-top
         div.container-fluid
             div.navbar-header
@@ -10,9 +10,10 @@ block content
                     li
                         a(href='/logout', class='text-center new-account') Выйти
 
+block content
     div.container
         div.row
-            div.col-sm-6.col-md-4.col-md-offset-4
+            div.col-md-6.col-md-offset-4
                 #user
                     h1.text-center.login-title Вы вошли как: #{user.fio}
                     div.signup-wall
@@ -20,3 +21,4 @@ block content
                             li ФИО: #{user.fio}
                             li Email: #{user.email}
                             li Телефон: #{user.phone}
+                    a.btn.btn-lg.btn-default.btn-block(href='/notes') Заметки

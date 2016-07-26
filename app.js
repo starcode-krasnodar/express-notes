@@ -8,6 +8,7 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session'),
     flash = require('connect-flash'),
+    SequelizeStore = require('connect-session-sequelize')(session.Store),
     models = require('./models');
 
 var routes = require('./routes/index'),
@@ -26,8 +27,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'g42Y4ZXAJwmsjCse2K9E',
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false,
+    store: new SequelizeStore({
+        db: models.sequelize
+    })
 }));
 app.use(flash());
 app.use(passport.initialize());

@@ -10,7 +10,8 @@ module.exports = function(passport) {
             if (!user) {
                 return res.render('login', {
                     message: req.flash('message'),
-                    username: req.body.email
+                    username: req.body.email,
+                    title: 'Вход'
                 });
             }
 

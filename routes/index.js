@@ -15,7 +15,11 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function (passport) {
     router.get('/login', function (req, res) {
-        res.render('login', {message: req.flash('message'), username: ''});
+        res.render('login', {
+            message: req.flash('message'),
+            title: 'Вход',
+            username: ''
+        });
     });
 
     router.post('/login', login(passport));
@@ -23,6 +27,7 @@ module.exports = function (passport) {
     router.get('/signup', function (req, res) {
         res.render('signup', {
             message: req.flash('message'),
+            title: 'Регистрация',
             body: {
                 email: '',
                 fio: '',
@@ -39,7 +44,10 @@ module.exports = function (passport) {
     });
 
     router.get('/', isAuthenticated, function (req, res) {
-        res.render('index', {user: req.user});
+        res.render('index', {
+            title: 'Главная',
+            user: req.user
+        });
     });
 
     return router;

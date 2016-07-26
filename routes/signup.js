@@ -17,7 +17,8 @@ module.exports = function(passport) {
 
                 return res.render('signup', {
                     message: message,
-                    body: req.body
+                    body: req.body,
+                    title: 'Регистрация'
                 });
             }
 

@@ -2,6 +2,10 @@
   "name": "express-notes",
   "version": "0.0.1",
   "author": "Alexander Cherkashin <alexander.cherkashin@starcode.ru>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/starcode-krasnodar/express-notes.git"
+  },
   "engines": {
     "node": ">=4"
   },
